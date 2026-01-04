@@ -70,7 +70,7 @@ export default function SignUpPage() {
               .insert({
                 user_id: data.user.id,
                 intake_data: intakeData,
-              })
+              } as any)
 
             if (!profileError) {
               localStorage.removeItem('intakeData')

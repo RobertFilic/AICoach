@@ -47,7 +47,7 @@ export default function DashboardPage() {
               .insert({
                 user_id: user.id,
                 intake_data: intakeData,
-              })
+              } as any)
               .select()
               .single()
 
