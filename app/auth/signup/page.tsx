@@ -58,7 +58,7 @@ export default function SignUpPage() {
       }
 
       // Check if user has a session (email confirmation disabled) or needs to confirm email
-      if (data.session) {
+      if (data.session && data.user) {
         // User is logged in, try to save profile
         const intakeDataStr = localStorage.getItem('intakeData')
         if (intakeDataStr) {
