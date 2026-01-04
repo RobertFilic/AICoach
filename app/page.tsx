@@ -16,6 +16,11 @@ export default function Home() {
               Start Assessment
             </button>
           </Link>
+          <Link href="/auth/signin">
+            <button className="px-6 py-3 border-2 border-gray-600 text-gray-300 rounded-lg hover:bg-gray-800 transition">
+              Sign In
+            </button>
+          </Link>
         </div>
       </div>
     </main>
