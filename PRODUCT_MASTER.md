@@ -1,7 +1,8 @@
 # AI Personal Trainer MVP
 
-**Project Status:** Active / Planning Phase  
-**Last Updated:** January 3, 2026
+**Project Status:** Active / Development Phase  
+**Last Updated:** January 4, 2026  
+**Live URL:** [Deployed on Vercel](https://github.com/RobertFilic/AICoach)
 
 ---
 
@@ -61,13 +62,19 @@ Bespoke coaching logic with a "Prompt Manager" architecture for persona-driven f
 
 | ID | Task / User Story | Priority | Status | Notes |
 |----|------------------|----------|--------|-------|
-| 1.0 | Environment Setup | P0 | 🟢 | Next.js + Supabase initialized. |
-| 1.1 | Supabase Schema Design | P0 | ⚪ | Tables: profiles, trainer_prompts, workouts. |
-| 1.2 | Intake Form Component | P0 | ⚪ | Multi-step form (React Hook Form). |
-| 1.3 | Post-Intake Sign-up Flow | P0 | ⚪ | Persist intake data to profile on auth. |
-| 1.4 | AI Edge Function | P1 | ⚪ | Prompt-based workout generation logic. |
-| 1.5 | Workout Dashboard UI | P1 | ⚪ | Mobile-first text rendering. |
-| 2.0 | Wearable Data Sync | P2 | ⚪ | Integration with HealthKit/Google Fit. |
+| 1.0 | Environment Setup | P0 | ✅ | Next.js 14 + Supabase + Vercel configured. |
+| 1.1 | Supabase Schema Design | P0 | ✅ | Tables created: profiles, trainer_prompts, workouts with RLS policies. |
+| 1.2 | Intake Form Component | P0 | ✅ | 3-step form with bio, goals, experience, equipment, and injuries. |
+| 1.3 | Post-Intake Sign-up Flow | P0 | ✅ | Intake data saved to localStorage and synced to profile on signup. |
+| 1.4 | Landing Page & Navigation | P0 | ✅ | Dark-themed landing page with Sign In and Start Assessment buttons. |
+| 1.5 | Authentication Flow | P0 | ✅ | Sign up, sign in, and email confirmation pages implemented. |
+| 1.6 | User Dashboard | P0 | ✅ | Profile summary displaying all intake data. |
+| 1.7 | Preview Page | P0 | ✅ | Workout plan teaser with conversion CTA. |
+| 1.8 | AI Edge Function | P1 | 🟡 | Scaffold created, needs OpenAI integration. |
+| 1.9 | Workout Generation | P1 | ⚪ | Connect intake data to AI trainer for personalized plans. |
+| 2.0 | Progress Tracking | P1 | ⚪ | Mark exercises as complete, track sets/reps. |
+| 2.1 | Workout History | P2 | ⚪ | View past workouts and progress over time. |
+| 3.0 | Wearable Data Sync | P2 | ⚪ | Integration with HealthKit/Google Fit. |
 
 ---
 
@@ -84,8 +91,54 @@ Use Supabase PKCE flow. Ensure intake data is passed through the signup redirect
 
 ---
 
-## 6. Next Immediate Steps
+## 6. Completed Milestones
 
-1. Create the `profiles` and `trainer_prompts` SQL tables in Supabase.
-2. Develop the IntakeForm UI based on the 13-question questionnaire.
-3. Write the first "Master Trainer" system prompt for the database.
+✅ **Phase 1: Core Infrastructure (Jan 3-4, 2026)**
+- Next.js 14 project setup with TypeScript and Tailwind CSS
+- Supabase database with profiles, trainer_prompts, and workouts tables
+- Row Level Security policies configured
+- Deployed to Vercel with CI/CD from GitHub
+
+✅ **Phase 2: User Onboarding Flow (Jan 4, 2026)**
+- Multi-step intake form (3 steps, 10 questions)
+- Dark-themed UI across all pages
+- Password visibility toggles
+- Preview page with workout plan teaser
+- localStorage persistence for intake data
+
+✅ **Phase 3: Authentication (Jan 4, 2026)**
+- Supabase Auth integration
+- Sign up and sign in pages
+- Email confirmation flow support
+- Automatic profile creation on signup
+- Dashboard with profile summary
+
+---
+
+## 7. Next Immediate Steps
+
+1. ✅ ~~Create the `profiles` and `trainer_prompts` SQL tables in Supabase~~
+2. ✅ ~~Develop the IntakeForm UI~~
+3. ✅ ~~Write the first "Master Trainer" system prompt for the database~~
+4. **Next:** Connect OpenAI API to Edge Function for workout generation
+5. **Next:** Implement actual workout plan generation from intake data
+6. **Next:** Add progress tracking and workout completion features
+
+---
+
+## 8. Technical Implementation Notes
+
+### Completed
+- **Database:** PostgreSQL via Supabase with JSONB for flexible intake data storage
+- **Auth:** Supabase Auth with PKCE flow, support for email confirmation
+- **Frontend:** Next.js 14 App Router with client-side components
+- **Styling:** Tailwind CSS with dark theme (gray-900/gray-800 palette)
+- **Type Safety:** TypeScript with generated Supabase types
+- **Deployment:** Vercel with automatic deployments from GitHub main branch
+
+### Pending
+- OpenAI API integration for workout generation
+- Edge Function deployment to Supabase
+- Real-time workout plan generation
+- Exercise database/library
+- Progress tracking functionality

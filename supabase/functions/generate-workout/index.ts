@@ -47,7 +47,15 @@ serve(async (req) => {
           },
           {
             role: 'user',
-            content: `Create a personalized workout plan based on this intake data: ${JSON.stringify(intakeData)}`,
+            content: `Create a personalized workout plan based on this intake data: ${JSON.stringify(intakeData, null, 2)}
+
+Please structure your response as a workout plan with:
+- A motivational introduction
+- Week-by-week breakdown (start with Week 1)
+- Daily exercises with sets, reps, and rest periods
+- Any important notes about form or safety
+
+Format the plan in a clear, readable way that's easy to follow.`,
           },
         ],
         temperature: 0.7,
@@ -55,6 +63,11 @@ serve(async (req) => {
     })
 
     const openAIData = await openAIResponse.json()
+    
+    if (!openAIResponse.ok || !openAIData.choices?.[0]?.message?.content) {
+      throw new Error(`OpenAI API error: ${openAIData.error?.message || 'Unknown error'}`)
+    }
+    
     const workoutPlan = openAIData.choices[0].message.content
 
     // Save workout to database
